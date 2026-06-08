@@ -1,37 +1,32 @@
-
-import "./Flashcard.css";
 import { useState } from "react";
+import "./Flashcard.css";
+import type { FlashCardData } from "../data/FlashCard";
 
-type FlashcardProps = {
-  question: string;
-  answer: string;
-};
+type FlashCardProps = Pick<FlashCardData, "question" | "answer">;
 
-const Flashcard = ({ question, answer }: FlashcardProps) => {
+const Flashcard = ({ question, answer }: FlashCardProps) => {
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
 
-  const handleClick = () => {
+  const handleToggleAnswer = () => {
     setShowAnswer((prevAnswer) => !prevAnswer);
   };
 
   return (
-    <section className="flashcard">
-      <h1>Developer Flashcards</h1>
+    <article className="flash-card">
+      <h2>Question:</h2>
+      <h2>{question}</h2>
 
-      <h2>Question: </h2>
-      <p>{question}</p>
-      <button onClick={handleClick}>
+      <button onClick={handleToggleAnswer}>
         {showAnswer ? "Hide Answer" : "Show Answer"}
       </button>
 
       {showAnswer && (
-        <>
-            <h2>Answer:</h2>
-            <p>{answer}</p>
-        </>
-
+        <div className="flash-card__answer">
+          <h2>Answer: </h2>
+          <p>{answer}</p>
+        </div>
       )}
-    </section>
+    </article>
   );
 };
 

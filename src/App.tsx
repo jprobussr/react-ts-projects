@@ -1,23 +1,23 @@
 import "./App.css";
 import Flashcard from "./components/Flashcard";
-import { flashcards } from "./data/data";
-
-
+import { flashCards } from "./data/FlashCard";
 
 const App = () => {
   return (
     <main className="app">
-      <h1>Developer Flashcards</h1>
+      <h1>TypeScript Flashcards</h1>
 
-      {flashcards.map((card) => {
-        return (
-          <Flashcard
-            key={card.id}
-            question={card.question}
-            answer={card.answer}
-          />
-        )
-      })}
+      <section className="flash-card-list">
+        {flashCards.map((flashcard) => {
+          return (
+            <Flashcard
+              key={flashcard.id}
+              question={flashcard.question}
+              answer={flashcard.answer}
+            />
+          );
+        })}
+      </section>
     </main>
   );
 };
