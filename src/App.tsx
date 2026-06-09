@@ -1,11 +1,13 @@
-import "./App.css";
-import Flashcard from "./components/Flashcard";
-import { flashCards } from "./data/FlashCard";
+import { flashCards } from './data/FlashCard';
+import Flashcard from './components/Flashcard';
+import './App.css';
+
 
 const App = () => {
   return (
     <main className="app">
-      <h1>TypeScript Flashcards</h1>
+      <h1>TS Flashcards</h1>
+
 
       <section className="flash-card-list">
         {flashCards.map((flashcard) => {
@@ -15,9 +17,10 @@ const App = () => {
               question={flashcard.question}
               answer={flashcard.answer}
             />
-          );
+          )
         })}
       </section>
+
     </main>
   );
 };

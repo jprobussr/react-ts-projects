@@ -1,8 +1,8 @@
-import { useState } from "react";
-import "./Flashcard.css";
-import type { FlashCardData } from "../data/FlashCard";
+import type { FlashCardData } from '../data/FlashCard';
+import { useState } from 'react';
+import './Flashcard.css';
 
-type FlashCardProps = Pick<FlashCardData, "question" | "answer">;
+type FlashCardProps = Pick<FlashCardData, 'question' | 'answer'>;
 
 const Flashcard = ({ question, answer }: FlashCardProps) => {
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
@@ -14,16 +14,16 @@ const Flashcard = ({ question, answer }: FlashCardProps) => {
   return (
     <article className="flash-card">
       <h2>Question:</h2>
-      <h2>{question}</h2>
+      <p>{question}</p>
 
       <button onClick={handleToggleAnswer}>
-        {showAnswer ? "Hide Answer" : "Show Answer"}
+        {showAnswer ? 'Hide' : 'Show'}
       </button>
 
       {showAnswer && (
         <div className="flash-card__answer">
-          <h2>Answer: </h2>
-          <p>{answer}</p>
+          <h2>Answer:</h2>
+          <h3>{answer}</h3>
         </div>
       )}
     </article>
