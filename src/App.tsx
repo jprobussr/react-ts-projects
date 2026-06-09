@@ -14,8 +14,10 @@ const App = () => {
           return (
             <Flashcard
               key={flashcard.id}
+              topic={flashcard.topic}
               question={flashcard.question}
               answer={flashcard.answer}
+              difficulty={flashcard.difficulty}
             />
           )
         })}
