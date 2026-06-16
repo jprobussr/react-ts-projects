@@ -28,13 +28,14 @@ const Flashcard = ({ question, answer, topic, difficulty }: FlashCardProps) => {
       <h2>Question:</h2>
       <p>{question}</p>
 
-      <button onClick={handleToggleAnswer}>
-        {showAnswer ? 'Hide' : 'Show'}
-      </button>
-
-      <button onClick={handleToggleCompleted}>
-        {isCompleted ? 'Completed' : 'Mark Complete'}
-      </button>
+      <div className="flash-card__actions">
+        <button type="button" onClick={handleToggleAnswer}>
+          {showAnswer ? 'Hide' : 'Show'}
+        </button>
+        <button type="button" onClick={handleToggleCompleted}>
+          {isCompleted ? 'Undo Complete' : 'Mark Complete'}
+        </button>
+      </div>
 
       {isCompleted && (
         <p className="flash-card__completed">Nice work. Card completed.</p>
@@ -43,7 +44,7 @@ const Flashcard = ({ question, answer, topic, difficulty }: FlashCardProps) => {
       {showAnswer && (
         <div className="flash-card__answer">
           <h2>Answer:</h2>
-          <h3>{answer}</h3>
+          <p>{answer}</p>
         </div>
       )}
     </article>
