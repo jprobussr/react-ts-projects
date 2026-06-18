@@ -3,28 +3,65 @@
   border: 1px solid #374151;
   border-radius: 1rem;
   padding: 1.5rem;
-  min-height: 260px;
+  min-height: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.flash-card__topic {
-  color: #93c5fd;
-  font-weight: 700;
-}
-
-.flash-card h2 {
-  font-size: 1.5rem;
+.flash-card h2,
+.flash-card p {
+  margin: 0;
 }
 
 .flash-card__answer {
   color: #d1d5db;
+  line-height: 1.4;
+}
+
+.flash-card button {
+  width: fit-content;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  font-weight: 700;
 }
 
 .flash-card__difficulty {
-  display: inline-block;
-  margin-top: 1rem;
+  width: fit-content;
+  margin-top: auto;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
   background: #2563eb;
   font-weight: 700;
   text-transform: capitalize;
+}
+
+.flash-card__question {
+  min-height: 90px;
+}
+
+.flash-card__answer-area {
+  min-height: 95px;
+}
+
+.flash-card--completed {
+  border-color: #22c55e;
+  opacity: 0.85;
+}
+
+.flash-card--completed .flash-card__difficulty {
+  background: #16a34a;
+}
+
+.flash-card__completed {
+  width: fit-content;
+  margin: 0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #14532d;
+  color: #bbf7d0;
+  font-weight: 700;
 }

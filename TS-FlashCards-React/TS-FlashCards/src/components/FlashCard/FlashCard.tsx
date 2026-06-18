@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { FlashCard as FlashCardType } from "../../types/flashCard";
 import "./FlashCard.css";
 
@@ -9,11 +10,38 @@ type FlashCardProps = {
 };
 
 const FlashCard = ({ question, answer, topic, difficulty }: FlashCardProps) => {
+  const [showAnswer, setShowAnswer] = useState<boolean>(false);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
+
+  const handleToggleAnswer = () => {
+    setShowAnswer((prevAnswer) => !prevAnswer);
+  };
+
+  const handleToggleCompleted = () => {
+    setIsCompleted((prevCompleted) => !prevCompleted);
+  };
+
   return (
-    <article className="flash-card">
+    <article
+      className={`flash-card ${isCompleted ? "flash-card--completed" : ""}`}
+    >
       <p className="flash-card__topic">{topic}</p>
-      <h2>{question}</h2>
-      <p className="flash-card__answer">{answer}</p>
+      <h2 className="flash-card__question">{question}</h2>
+
+      <button onClick={handleToggleAnswer}>
+        {showAnswer ? "Hide Answer" : "Show Answer"}
+      </button>
+
+      <button onClick={handleToggleCompleted}>
+        {isCompleted ? "Undo Complete" : "Mark Complete"}
+      </button>
+
+      <div className="flash-card__answer-area">
+        {showAnswer && <p className="flash-card__answer">{answer}</p>}
+      </div>
+
+      {isCompleted && <p className="flash-card__completed">✅ Card Completed</p>}
+
       <p className="flash-card__difficulty">{difficulty}</p>
     </article>
   );
