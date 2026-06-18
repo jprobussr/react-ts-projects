@@ -1,24 +1,31 @@
 import FlashCard from "./components/FlashCard/FlashCard";
 import { flashCards } from "./data/flashCards";
+import "./App.css";
 
-console.log(flashCards);
+
+
 
 const App = () => {
   return (
-    <main>
-      <h1>TypeScript FlashCards</h1>
+    <main className="app">
+      <header className="app-header">
+        <h1>TypeScript Flash Cards</h1>
+        <p>Study TypeScript one concept at a time.</p>
+      </header>
 
-      {flashCards.map((card) => {
-        return (
-          <FlashCard
-            key={card.id}
-            question={card.question}
-            answer={card.answer}
-            topic={card.topic}
-            difficulty={card.difficulty}
-          />
-        );
-      })}
+      <section className="card-grid">
+        {flashCards.map((card) => {
+          return (
+            <FlashCard
+              key={card.id}
+              question={card.question}
+              answer={card.answer}
+              topic={card.topic}
+              difficulty={card.difficulty}
+            />
+          );
+        })}
+      </section>
     </main>
   );
 };

@@ -1,0 +1,30 @@
+.flash-card {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  min-height: 260px;
+}
+
+.flash-card__topic {
+  color: #93c5fd;
+  font-weight: 700;
+}
+
+.flash-card h2 {
+  font-size: 1.5rem;
+}
+
+.flash-card__answer {
+  color: #d1d5db;
+}
+
+.flash-card__difficulty {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #2563eb;
+  font-weight: 700;
+  text-transform: capitalize;
+}

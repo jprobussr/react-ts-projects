@@ -1,4 +1,5 @@
 import type { FlashCard as FlashCardType } from "../../types/flashCard";
+import "./FlashCard.css";
 
 type FlashCardProps = {
   question: FlashCardType["question"];
@@ -9,11 +10,11 @@ type FlashCardProps = {
 
 const FlashCard = ({ question, answer, topic, difficulty }: FlashCardProps) => {
   return (
-    <article>
-      <p>{topic}</p>
+    <article className="flash-card">
+      <p className="flash-card__topic">{topic}</p>
       <h2>{question}</h2>
-      <p>{answer}</p>
-      <p>{difficulty}</p>
+      <p className="flash-card__answer">{answer}</p>
+      <p className="flash-card__difficulty">{difficulty}</p>
     </article>
   );
 };
