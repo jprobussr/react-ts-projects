@@ -18,3 +18,24 @@
   align-items: stretch;
   gap: 1.25rem;
 }
+
+.app-progress {
+  font-weight: 700;
+  color: #93c5fd;
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 500px;
+  height: 20px;
+  margin: 1rem auto 2rem;
+  background: #374151;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: #22c55e;
+  transition: width 0.3s ease;
+}
