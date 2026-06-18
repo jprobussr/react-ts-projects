@@ -1,10 +1,10 @@
-import type { FlashCard } from "../../types/flashCard";
+import type { FlashCard as FlashCardType } from "../../types/flashCard";
 
 type FlashCardProps = {
-  question: FlashCard["question"];
-  answer: FlashCard["answer"];
-  topic: FlashCard["topic"];
-  difficulty: FlashCard["difficulty"];
+  question: FlashCardType["question"];
+  answer: FlashCardType["answer"];
+  topic: FlashCardType["topic"];
+  difficulty: FlashCardType["difficulty"];
 };
 
 const FlashCard = ({ question, answer, topic, difficulty }: FlashCardProps) => {
