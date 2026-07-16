@@ -1,6 +1,8 @@
 import './App.css';
+import ProductCard from './components/ProductCard/ProductCard';
 import ProfileCard from './components/ProfileCard';
 import type { DeveloperProfile } from './types/profile';
+import type { Product } from './types/Product';
 
 const profile: DeveloperProfile = {
   name: 'John Probus',
@@ -8,15 +10,23 @@ const profile: DeveloperProfile = {
   location: 'Murray, Kentucky',
   isAvailableForWork: true,
   skills: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript'],
-  favoriteLanguage: 'React'
+  favoriteLanguage: 'React',
+};
+
+const product: Product = {
+  name: 'Mechanical Keyboard',
+  price: 89.99,
+  category: 'Electronics',
+  inStock: false,
 };
 
 const App = () => {
   return (
     <main className="app">
-      <h1>Developer Profile Card</h1>
+      <h1>React TypeScript Cards</h1>
 
       <ProfileCard profile={profile} />
+      <ProductCard product={product} />
     </main>
   );
 };
