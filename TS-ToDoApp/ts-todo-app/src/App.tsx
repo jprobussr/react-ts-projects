@@ -1,11 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-
-type Todo = {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-};
+import type { Todo } from "./types/Todo";
+import TodoForm from "./components/TodoForm";
 
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([
@@ -82,17 +78,11 @@ const App = () => {
           </p>
         </header>
 
-        <form className="todo__form" onSubmit={handleAddTodo}>
-          <input
-            type="text"
-            className="todo__input"
-            placeholder="What do you need to do?"
-            value={newTodoText}
-            onChange={handleTodoTextChange}
-          />
-
-          <button className="todo__button" type="button">Add Task</button>
-        </form>
+        <TodoForm
+          newTodoText={newTodoText}
+          onTodoTextChange={handleTodoTextChange}
+          onAddTodo={handleAddTodo}
+        />
 
         <ul className="todo__list">
           {todos.map((todo) => {
