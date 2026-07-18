@@ -1,0 +1,25 @@
+.todo__header {
+  margin-bottom: var(--space-xl);
+}
+
+.todo__eyebrow {
+  margin: 0 0 var(--space-xs);
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.todo__title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.1;
+}
+
+.todo__description {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
