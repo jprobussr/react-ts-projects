@@ -1,28 +1,30 @@
-import { useState } from "react";
-import "./App.css";
-import type { Todo } from "./types/Todo";
-import TodoForm from "./components/TodoForm";
+import { useState } from 'react';
+import './App.css';
+import type { Todo } from './types/Todo';
+import TodoForm from './components/TodoForm';
+import TodoItem from './components/TodoItem/TodoItem';
+import TodoList from './components/TodoList/TodoList';
 
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([
     {
       id: 1,
-      text: "Practice React and TypeScript",
+      text: 'Practice React and TypeScript',
       isCompleted: true,
     },
     {
       id: 2,
-      text: "Go to the gym",
+      text: 'Go to the gym',
       isCompleted: false,
     },
     {
       id: 3,
-      text: "Cook Dinner",
+      text: 'Cook Dinner',
       isCompleted: false,
     },
   ]);
 
-  const [newTodoText, setNewTodoText] = useState("");
+  const [newTodoText, setNewTodoText] = useState('');
 
   const handleToggleTodo = (id: number): void => {
     setTodos((prevTodos) => {
@@ -50,7 +52,7 @@ const App = () => {
 
     const trimmedTodo = newTodoText.trim();
 
-    if (trimmedTodo === "") {
+    if (trimmedTodo === '') {
       return;
     }
 
@@ -64,7 +66,7 @@ const App = () => {
       return [...prevTodos, newTodo];
     });
 
-    setNewTodoText("");
+    setNewTodoText('');
   };
 
   return (
@@ -84,26 +86,7 @@ const App = () => {
           onAddTodo={handleAddTodo}
         />
 
-        <ul className="todo__list">
-          {todos.map((todo) => {
-            return (
-              <li
-                className={`todo__item ${todo.isCompleted ? "todo__item--completed" : ""}`}
-                key={todo.id}
-              >
-                <label className="todo__checkbox">
-                  <input
-                    type="checkbox"
-                    checked={todo.isCompleted}
-                    onChange={() => handleToggleTodo(todo.id)}
-                  />
-
-                  <span className="todo__item-text">{todo.text}</span>
-                </label>
-              </li>
-            );
-          })}
-        </ul>
+        <TodoList todos={todos} onToggleTodo={handleToggleTodo} />
       </section>
     </main>
   );
