@@ -1,0 +1,33 @@
+.todo-item {
+  padding: var(--space-md);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.todo-item__content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+}
+
+.todo-item__checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--color-primary);
+}
+
+.todo-item__text {
+  line-height: 1.4;
+}
+
+.todo-item--completed .todo-item__text {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.todo-item--completed {
+  opacity: 0.75;
+}

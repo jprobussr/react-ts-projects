@@ -1,9 +1,25 @@
+import { useState } from 'react';
 import './TodoForm.css';
 
-const TodoForm = () => {
+const TodoForm = ({onAddTodo}) => {
+  const [todoText, setTodoText] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form Submitted!');
+
+    const trimmedTodo = todoText.trim();
+
+    if (!trimmedTodo) {
+      return;
+    }
+
+    onAddTodo(trimmedTodo);
+    
+    setTodoText('');
+  };
+
+  const handleTodoChange = (event) => {
+    setTodoText(event.target.value);
   };
 
   return (
@@ -19,6 +35,8 @@ const TodoForm = () => {
           id="todo"
           name="todo"
           placeholder="What needs to be done?"
+          value={todoText}
+          onChange={handleTodoChange}
         />
 
         <button className="todo-form__button" type="submit">
