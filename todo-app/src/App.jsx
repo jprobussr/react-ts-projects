@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header.jsx';
 import TodoForm from './components/TodoForm.jsx';
 import TodoList from './components/TodoList.jsx';
+import TodoSummary from './components/TodoSummary.jsx';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -22,13 +23,22 @@ const App = () => {
   const handleToggleTodo = (todoId) => {
     setTodos((prevTodos) => {
       return prevTodos.map((todo) => {
-        return {
-          ...todo,
-          isCompleted: !todo.isCompleted,
-        };
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            isCompleted: !todo.isCompleted,
+          };
+        }
+        return todo;
       });
+    });
+  };
 
-      return todo;
+  const handleDeleteTodo = (todoId) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => {
+        return todo.id !== todoId;
+      });
     });
   };
 
@@ -38,7 +48,13 @@ const App = () => {
         <Header />
         <TodoForm onAddTodo={handleAddTodo} />
 
-        <TodoList todos={todos} onToggleTodo={handleToggleTodo} />
+        <TodoSummary todos={todos} />
+
+        <TodoList
+          todos={todos}
+          onToggleTodo={handleToggleTodo}
+          onDeleteTodo={handleDeleteTodo}
+        />
       </section>
     </main>
   );

@@ -1,4 +1,8 @@
 .todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
   padding: var(--space-md);
   color: var(--color-text);
   background-color: var(--color-background);
@@ -8,8 +12,10 @@
 
 .todo-item__content {
   display: flex;
+  flex: 1;
   align-items: center;
   gap: var(--space-sm);
+  min-width: 0;
   cursor: pointer;
 }
 
@@ -30,4 +36,22 @@
 
 .todo-item--completed {
   opacity: 0.75;
+}
+
+.todo-item__text {
+  overflow-wrap: anywhere;
+}
+
+.todo-item__delete {
+  padding: var(--space-xs) var(--space-sm);
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.todo-item__delete:hover {
+  border-color: #f87171;
+  color: #f87171;
 }

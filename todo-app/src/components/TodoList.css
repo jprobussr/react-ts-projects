@@ -16,4 +16,12 @@
   list-style: none;
 }
 
-
+.todo-list__empty {
+  margin: 0;
+  padding: var(--space-lg);
+  color: var(--color-text-muted);
+  text-align: center;
+  background-color: var(--color-background);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
