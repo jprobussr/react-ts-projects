@@ -1,0 +1,16 @@
+.todo-list {
+  display: grid;
+  gap: var(--space-small);
+  margin: var(--space-large) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo-list__empty {
+  margin: var(--space-large) 0 0;
+  padding: var(--space-large);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-medium);
+  color: var(--color-text-muted);
+  text-align: center;
+}

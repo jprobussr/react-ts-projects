@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm.jsx';
 import TodoList from './components/TodoList.jsx';
+import TodoSummary from './components/TodoSummary.jsx';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -32,13 +33,22 @@ const App = () => {
     });
   };
 
+  const handleDeleteTodo = (todoId) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => {
+        return todo.id !== todoId;
+      });
+    });
+  };
+
   return (
     <main className="app">
       <section className="todo-app">
         <h1>Todo List</h1>
 
         <TodoForm onAddTodo={handleAddTodo} />
-        <TodoList todos={todos} onToggleTodo={handleToggleTodo} />
+        <TodoSummary todos={todos} />
+        <TodoList todos={todos} onToggleTodo={handleToggleTodo} onDeleteTodo={handleDeleteTodo} />
       </section>
     </main>
   );
