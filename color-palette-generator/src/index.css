@@ -1,0 +1,19 @@
+:root {
+  font-family: Inter, sans-serif;
+  color: #f8fafc;
+  background-color: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
