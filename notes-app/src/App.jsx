@@ -1,11 +1,25 @@
 import { useState } from 'react';
 import './App.css';
 import NoteForm from './components/NoteForm.jsx';
+import NoteList from './components/NoteList.jsx';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
 
-  const handleAddNote = (newNote) => {
+  const handleDeleteNote = (noteId) => {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note) => {
+        return note.id !== noteId;
+      });
+    });
+  };
+
+  const handleAddNote = (newNoteText) => {
+    const newNote = {
+      id: crypto.randomUUID(),
+      text: newNoteText,
+    };
+
     setNotes((prevNotes) => {
       return [...prevNotes, newNote];
     });
@@ -18,6 +32,8 @@ const App = () => {
         <p>Capture your ideas and keep them organized.</p>
 
         <NoteForm onAddNote={handleAddNote} />
+
+        <NoteList notes={notes} onDeleteNote={handleDeleteNote} />
       </section>
     </main>
   );
