@@ -1,6 +1,11 @@
 import './NoteList.css';
 
 const NoteList = ({ notes, onDeleteNote }) => {
+
+  if (notes.length === 0) {
+    return <p className="notes-list__empty">No notes yet.</p>
+  }
+
   return (
     <ul className="notes-list">
       {notes.map((note) => {

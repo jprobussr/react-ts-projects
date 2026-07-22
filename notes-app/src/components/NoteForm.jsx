@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './NoteForm.css';
 
 const NoteForm = ({ onAddNote }) => {
   const [noteText, setNoteText] = useState('');

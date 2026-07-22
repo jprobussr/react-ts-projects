@@ -33,6 +33,10 @@ const App = () => {
 
         <NoteForm onAddNote={handleAddNote} />
 
+        <p className="notes-count">
+          {notes.length} {notes.length === 1 ? 'note' : 'notes'}
+        </p>
+
         <NoteList notes={notes} onDeleteNote={handleDeleteNote} />
       </section>
     </main>
