@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-
-type Note = {
-  id: string;
-  title: string;
-  content: string;
-};
+import NoteForm from './components/NoteForm';
+import NoteList from './components/NoteList';
+import type { Note } from './types/Note';
 
 const App = () => {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -46,33 +43,15 @@ const App = () => {
       <section>
         <h1>Notes App TS</h1>
 
-        <input
-          type="text"
-          placeholder="Note Title"
-          value={title}
-          onChange={handleTitleChange}
+        <NoteForm
+          title={title}
+          content={content}
+          onTitleChange={handleTitleChange}
+          onContentChange={handleContentChange}
+          onAddNote={handleAddNote}
         />
 
-        <textarea
-          placeholder="Write your note..."
-          value={content}
-          onChange={handleContentChange}
-        ></textarea>
-
-        <button type="button" onClick={handleAddNote}>
-          Add Note
-        </button>
-
-        <section className="notes-list">
-          {notes.map((note) => {
-            return (
-              <article className="note-card" key={note.id}>
-                <h2>{note.title}</h2>
-                <p>{note.content}</p>
-              </article>
-            );
-          })}
-        </section>
+        <NoteList notes={notes} />
       </section>
     </main>
   );
