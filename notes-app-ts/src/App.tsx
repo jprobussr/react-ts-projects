@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import './App.css';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
 import type { Note } from './types/Note';
 
 const App = () => {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<Note[]>(() => {
+    const savedNotes = localStorage.getItem('notes');
+
+    if (!savedNotes) {
+      return [];
+    }
+
+    return JSON.parse(savedNotes) as Note[];
+  });
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -38,6 +46,18 @@ const App = () => {
     setContent('');
   };
 
+  const handleDeleteNote = (noteId: string) => {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note) => {
+        return note.id !== noteId;
+      });
+    });
+  };
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
+
   return (
     <main className="app">
       <section>
@@ -51,7 +71,7 @@ const App = () => {
           onAddNote={handleAddNote}
         />
 
-        <NoteList notes={notes} />
+        <NoteList notes={notes} onDeleteNote={handleDeleteNote} />
       </section>
     </main>
   );

@@ -4,14 +4,25 @@ import type { Note } from '../types/Note';
 
 type NoteListProps = {
   notes: Note[];
+  onDeleteNote: (noteId: string) => void;
 };
 
-const NoteList = ({ notes }: NoteListProps) => {
+const NoteList = ({ notes, onDeleteNote }: NoteListProps) => {
+  const hasNotes = notes.length > 0;
+
   return (
     <section className="notes-list">
-      {notes.map((note) => {
-        return <NoteCard key={note.id} note={note} />;
-      })}
+      {hasNotes ? (
+        notes.map((note) => {
+          return (
+            <NoteCard key={note.id} note={note} onDeleteNote={onDeleteNote} />
+          );
+        })
+      ) : (
+        <p className="notes-list__empty">
+          No notes yet. Create your first note.
+        </p>
+      )}
     </section>
   );
 };
