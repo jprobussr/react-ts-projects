@@ -1,0 +1,11 @@
+.app {
+  width: min(100% - 2rem, 70rem);
+  margin-inline: auto;
+  padding-block: 2rem 3rem;
+}
+
+.app__title {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}

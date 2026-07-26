@@ -18,6 +18,7 @@ const NoteForm = ({
   return (
     <section className="note-form">
       <input
+        className="note-form__input"
         type="text"
         placeholder="Note Title"
         value={title}
@@ -25,12 +26,13 @@ const NoteForm = ({
       />
 
       <textarea
+        className="note-form__textarea"
         placeholder="Write your note..."
         value={content}
         onChange={onContentChange}
       ></textarea>
 
-      <button type="button" onClick={onAddNote}>
+      <button className="note-form__button" type="button" onClick={onAddNote}>
         Add Note
       </button>
     </section>

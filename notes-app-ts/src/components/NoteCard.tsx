@@ -13,10 +13,16 @@ const NoteCard = ({ note, onDeleteNote }: NoteCardProps) => {
 
   return (
     <article className="note-card" key={note.id}>
-      <h2>{note.title}</h2>
-      <p>{note.content}</p>
+      <div className="note-card__content">
+        <h2 className="note-card__title">{note.title}</h2>
+        <p className="note-card__text">{note.content}</p>
+      </div>
 
-      <button type="button" onClick={handleDeleteClick}>
+      <button
+        className="note-card__delete-button"
+        type="button"
+        onClick={handleDeleteClick}
+      >
         x
       </button>
     </article>

@@ -61,7 +61,7 @@ const App = () => {
   return (
     <main className="app">
       <section>
-        <h1>Notes App TS</h1>
+        <h1 className='app__title'>Notes App TS</h1>
 
         <NoteForm
           title={title}
