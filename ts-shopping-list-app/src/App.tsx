@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import type { ShoppingItem } from './types/shopping';
 import './App.css';
+import ShoppingForm from './components/ShoppingForm';
 
 const App = () => {
+  const [shoppingItems, setShoppingItems] = useState<ShoppingItem[]>([])
+
   return (
     <main className="app">
       <section className="shopping-app">
@@ -10,6 +14,9 @@ const App = () => {
         <p className="shopping-app__description">
           Keep track of everything you need to buy.
         </p>
+
+        <ShoppingForm />
+        
       </section>
     </main>
   );
