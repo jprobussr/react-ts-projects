@@ -1,16 +1,35 @@
-import { useState, type ChangeEvent } from 'react';
+import { useState, type ChangeEvent, type SubmitEvent } from 'react';
 import './ShoppingForm.css';
 
+type ShoppingFormProps = {
+  onAddItem: (itemName: string) => void;
+};
 
-const ShoppingForm = () => {
+const ShoppingForm = ({ onAddItem }: ShoppingFormProps) => {
   const [itemName, setItemName] = useState('');
 
   const handleItemNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setItemName(event.target.value);
-  }
+  };
+
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    const trimmedItemName = itemName.trim();
+
+    if (!trimmedItemName) {
+      return;
+    }
+
+    console.log(trimmedItemName);
+
+    onAddItem(trimmedItemName);
+
+    setItemName('')
+  };
 
   return (
-    <form className="shopping-form">
+    <form onSubmit={handleSubmit} className="shopping-form">
       <label htmlFor="item-name" className="shopping-form__label">
         Add an item
       </label>
