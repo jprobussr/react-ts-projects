@@ -4,3 +4,15 @@
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-small);
 }
+
+.shopping-item__name {
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.shopping-item__name--purchased {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  opacity: 0.75;
+}

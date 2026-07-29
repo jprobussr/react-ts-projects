@@ -24,6 +24,20 @@ const App = () => {
     });
   };
 
+  const handleToggleItem = (itemId: string) => {
+    setShoppingItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            isPurchased: !item.isPurchased,
+          };
+        }
+        return item;
+      });
+    });
+  };
+
   return (
     <main className="app">
       <section className="shopping-list">
@@ -39,7 +53,15 @@ const App = () => {
 
         <ul className="shopping-list__items">
           {shoppingItems.map((item) => {
-            return <ShoppingItem key={item.id} name={item.name} />
+            return (
+              <ShoppingItem
+                id={item.id}
+                key={item.id}
+                name={item.name}
+                isPurchased={item.isPurchased}
+                onToggleItem={handleToggleItem}
+              />
+            );
           })}
         </ul>
       </section>
