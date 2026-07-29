@@ -1,13 +1,33 @@
 import { useState } from 'react';
 import './ShoppingForm.css';
 
-const ShoppingForm = () => {
-    const [itemName, setItemName] = useState('');
+type ShoppingFormProps = {
+  onAddItem: (itemName: string) => void;
+};
 
+const ShoppingForm = ({ onAddItem }: ShoppingFormProps) => {
+  const [itemName, setItemName] = useState('');
 
+  const handleItemNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setItemName(event.target.value);
+  };
+
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedItemName = itemName.trim();
+
+    if (!trimmedItemName) {
+      return;
+    }
+
+    onAddItem(trimmedItemName);
+
+    setItemName('');
+  };
 
   return (
-    <form className="shopping-form">
+    <form onSubmit={handleSubmit} className="shopping-form">
       <label htmlFor="shopping-item">Shopping item</label>
 
       <input
@@ -16,6 +36,7 @@ const ShoppingForm = () => {
         className="shopping-form__input"
         placeholder="Example: Apples"
         value={itemName}
+        onChange={handleItemNameChange}
       />
 
       <button className="shopping-form__button" type="submit">

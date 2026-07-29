@@ -1,0 +1,6 @@
+.shopping-item {
+  padding: 1rem;
+  background-color: var(--color-surface-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+}
