@@ -46,3 +46,13 @@
   padding: 0;
   list-style: none;
 }
+
+.shopping-list__empty {
+  margin: 2rem 0;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+  border: 1px dotted;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}

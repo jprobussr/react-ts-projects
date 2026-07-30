@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import ShoppingForm from './components/ShoppingForm';
 import ShoppingItem from './components/ShoppingItem';
+import ShoppingSummary from './components/ShoppingSummary';
 
 type ShoppingItem = {
   id: string;
@@ -38,6 +39,20 @@ const App = () => {
     });
   };
 
+  const handleDeleteItem = (itemId: string) => {
+    setShoppingItems((prevItems) => {
+      return prevItems.filter((item) => {
+        return item.id !== itemId;
+      });
+    });
+  };
+
+  const purchasedCount = shoppingItems.filter((item) => {
+    return item.isPurchased;
+  }).length;
+
+  const remainingCount = shoppingItems.length - purchasedCount;
+
   return (
     <main className="app">
       <section className="shopping-list">
@@ -51,19 +66,30 @@ const App = () => {
 
         <ShoppingForm onAddItem={handleAddItem} />
 
-        <ul className="shopping-list__items">
-          {shoppingItems.map((item) => {
-            return (
-              <ShoppingItem
-                id={item.id}
-                key={item.id}
-                name={item.name}
-                isPurchased={item.isPurchased}
-                onToggleItem={handleToggleItem}
-              />
-            );
-          })}
-        </ul>
+        <ShoppingSummary
+          totalCount={shoppingItems.length}
+          purchasedCount={purchasedCount}
+          remainingCount={remainingCount}
+        />
+
+        {shoppingItems.length === 0 ? (
+          <p className="shopping-list__empty">Your shopping list is empty</p>
+        ) : (
+          <ul className="shopping-list__items">
+            {shoppingItems.map((item) => {
+              return (
+                <ShoppingItem
+                  id={item.id}
+                  key={item.id}
+                  name={item.name}
+                  isPurchased={item.isPurchased}
+                  onToggleItem={handleToggleItem}
+                  onDeleteItem={handleDeleteItem}
+                />
+              );
+            })}
+          </ul>
+        )}
       </section>
     </main>
   );
