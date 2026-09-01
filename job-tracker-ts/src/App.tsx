@@ -4,14 +4,22 @@ import { useState } from 'react';
 import JobForm from './components/JobForm/JobForm';
 
 const App = () => {
-  const [application, setApplication] = useState<JobApplication[]>([]);
+  const [applications, setApplications] = useState<JobApplication[]>([]);
+  console.log(`applications: ${applications.length}`);
+
+
+  const handleAddApplications = (newApplication: JobApplication) => {
+    setApplications((prevApplications) => {
+      return [...prevApplications, newApplication];
+    });
+  };
 
   return (
     <main className="app">
       <section>
         <h1>Job Tracker</h1>
 
-        <JobForm />
+        <JobForm onAddApplication={handleAddApplications}/>
       </section>
     </main>
   );
