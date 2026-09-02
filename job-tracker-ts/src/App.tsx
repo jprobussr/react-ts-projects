@@ -2,6 +2,7 @@ import './App.css';
 import type { JobApplication } from './types/JobApplication';
 import { useState } from 'react';
 import JobForm from './components/JobForm/JobForm';
+import JobList from './components/JobList/JobList';
 
 const App = () => {
   const [applications, setApplications] = useState<JobApplication[]>([]);
@@ -20,6 +21,7 @@ const App = () => {
         <h1>Job Tracker</h1>
 
         <JobForm onAddApplication={handleAddApplications}/>
+        <JobList applications={applications} />
       </section>
     </main>
   );
