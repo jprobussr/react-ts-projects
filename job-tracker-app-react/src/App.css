@@ -1,0 +1,11 @@
+.app {
+  width: min(100% - 2rem, 900px);
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.app h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
