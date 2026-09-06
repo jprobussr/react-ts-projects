@@ -26,10 +26,12 @@ const JobForm = ({ onAddApplication }) => {
     event.preventDefault();
 
     const newApplication = {
+      id: crypto.randomUUID(),
       company,
       location,
       position,
       isRemote,
+      status: 'Applied'
     };
 
     onAddApplication(newApplication);

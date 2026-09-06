@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import JobForm from './components/JobForm/JobForm.jsx';
+import JobList from './components/JobList/JobList.jsx';
 
 const App = () => {
   const [applications, setApplications] = useState([]);
@@ -11,13 +12,26 @@ const App = () => {
     });
   };
 
+  const handleStatusChange = (id, newStatus) => {
+    setApplications((prevApplications) => {
+      return prevApplications.map((application) => {
+        return application.id === id
+          ? { ...application, status: newStatus }
+          : application;
+      });
+    });
+  };
+
   return (
     <main className="app">
       <h1>Job Tracker</h1>
 
       <JobForm onAddApplication={handleAddApplication} />
 
-      <pre>{JSON.stringify(applications, null, 2)}</pre>
+      <JobList
+        applications={applications}
+        onStatusChange={handleStatusChange}
+      />
     </main>
   );
 };
