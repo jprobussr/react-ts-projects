@@ -22,6 +22,14 @@ const App = () => {
     });
   };
 
+  const handleDeleteApplication = (id) => {
+    setApplications((prevApplications) => {
+      return prevApplications.filter((application) => {
+        return application.id !== id;
+      });
+    });
+  };
+
   return (
     <main className="app">
       <h1>Job Tracker</h1>
@@ -31,6 +39,7 @@ const App = () => {
       <JobList
         applications={applications}
         onStatusChange={handleStatusChange}
+        onDeleteApplication={handleDeleteApplication}
       />
     </main>
   );

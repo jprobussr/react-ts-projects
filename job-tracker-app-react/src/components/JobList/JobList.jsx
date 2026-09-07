@@ -1,6 +1,6 @@
 import JobCard from '../JobCard/JobCard.jsx';
 
-const JobList = ({ applications, onStatusChange }) => {
+const JobList = ({ applications, onStatusChange, onDeleteApplication }) => {
   return (
     <section>
       <h2>Applications</h2>
@@ -11,6 +11,7 @@ const JobList = ({ applications, onStatusChange }) => {
             key={application.id}
             application={application}
             onStatusChange={onStatusChange}
+            onDeleteApplication={onDeleteApplication}
           />
         );
       })}

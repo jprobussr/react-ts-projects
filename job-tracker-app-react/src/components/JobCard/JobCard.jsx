@@ -1,4 +1,4 @@
-const JobCard = ({ application, onStatusChange }) => {
+const JobCard = ({ application, onStatusChange, onDeleteApplication }) => {
   return (
     <article>
       <h3>{application.company}</h3>
@@ -15,6 +15,10 @@ const JobCard = ({ application, onStatusChange }) => {
         <option value="Offer">Offer</option>
         <option value="Rejected">Rejected</option>
       </select>
+
+      <button type="button" onClick={() => onDeleteApplication(application.id)}>
+        Delete
+      </button>
     </article>
   );
 };
