@@ -31,7 +31,7 @@ const JobForm = ({ onAddApplication }) => {
       location,
       position,
       isRemote,
-      status: 'Applied'
+      status: 'Applied',
     };
 
     onAddApplication(newApplication);
@@ -69,7 +69,6 @@ const JobForm = ({ onAddApplication }) => {
         id="location"
         value={location}
         onChange={handleLocationChange}
-        required
       />
 
       <label htmlFor="isRemote">Remote</label>
