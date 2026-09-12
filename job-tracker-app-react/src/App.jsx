@@ -12,7 +12,7 @@ const App = () => {
     });
   };
 
-  const handleStatusChange = (id, newStatus) => {
+  const handleStatusChanges = (id, newStatus) => {
     setApplications((prevApplications) => {
       return prevApplications.map((application) => {
         return application.id === id
@@ -38,7 +38,7 @@ const App = () => {
 
       <JobList
         applications={applications}
-        onStatusChange={handleStatusChange}
+        onStatusChange={handleStatusChanges}
         onDeleteApplication={handleDeleteApplication}
       />
     </main>
